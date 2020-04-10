@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title>Products</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+<link rel="stylesheet" href="/custom.css">
+</head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/navbar"></div>
+		<h2>
+			Products<span th:text="${tag}"></span>
+		</h2>
+		<div class="list-group" th:each="product:${}">
+			<div class="list-group-item list-group-item-action">
+				<div class="d-flex w-100 justify-content-between">
+				</div>
+				
+			</div>
+		</div>
+		<div th:if="${#lists.isEmpty(productList)}">
+			<h3>Category is empty</h3>
+		</div>
+	</div>
+	<footer th:replace="fragments/footer"></footer>
+	<script th:replace="fragments/scripts"></script>
+</body>
+</html>

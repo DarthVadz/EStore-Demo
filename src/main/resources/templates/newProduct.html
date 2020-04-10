@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title>New Product</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+<link rel="stylesheet" href="/custom.css">
+</head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/navbar"></div>
+		<h2>New Product</h2>
+		<form th:action="@{/product/new}" method="post">
+			<br />
+			<div class="form-group">
+				<p>Select Vehicle Category Status:</p>
+				<select th:field="*{product.categories}" class="form-control">
+					<option
+						th:each="vehicle : ${T(com.tts.d22_GroovyStore_1.model.Category.Vehicle).values()}"
+						th:value="${vehicle}" th:text="${vehicle}"></option>
+				</select>
+			</div>
+			<input type="text" name="brand" th:placeholder="Brand" th:field="*{product.brand}" class="form-control" /> <br />
+			<input type="text" name="model" th:placeholder="Model" th:field="*{product.model}" class="form-control" /> <br />
+			<input type="text" name="name" th:placeholder="Name" th:field="*{product.name}" class="form-control" /> <br />
+			<input type="number" name="inventory" placeholder="1" th:field="*{product.inventory}" min="1"> <br />
+			<textarea name="description" th:placeholder="Description" th:field="*{product.description}" class="form-control" rows="4" cols="50"> </textarea><br />
+			<!-- Add imagefile input and price inputs -->
+			<div align="center" th:if="${param.error}">
+				<h4 style="color: red">Fail</h4>
+			</div>
+			<button class="btn btn-md btn-success btn-block" name="Submit"
+				value="NewProduct" type="Submit">Add New</button>
+		</form>
+	</div>
+	<footer th:replace="fragments/footer"></footer>
+	<script th:replace="fragments/scripts"></script>
+</body>
+</html>

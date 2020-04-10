@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<link th:replace="fragments/headLinks">
+<title>Groovy eStore</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div th:replace="fragments/navbar"></div>
+		<div class="jumbotron">
+			<h1 class="display-3">Totally Awesome and Groovy eStore</h1>
+			<p>We have all kinds of groovy and awesome things. Buy lot of it
+				and give us your money.</p>
+			<p>
+				<a class="btn btn-primary btn-lg" href="#" role="button"> Buy
+					Stuff &raquo;</a>
+			</p>
+		</div>
+		<div class="row">
+			<div th:each="product:${productList}">
+				<div class="col-md-3">
+					<div class="card">
+						<!-- <img class="card-img-top"
+							th:src="${product.imgUrl}"
+							style="width: 100%; height: 250px; object-fit: cover;"
+							alt="Card image cap"> -->
+						<div class="card-body">
+							<h5 class="card-title" th:text="${product.name}"></h5>
+							<p class="card-text">Buy It.</p>
+							<a th:href="@{/product/} + ${product.id}" class="btn btn-primary">See Details</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="fragments/footer"></footer>
+	<script th:replace="fragments/scripts"></script>
+</body>
+</html>

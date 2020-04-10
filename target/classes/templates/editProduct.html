@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title>Edit Product</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+<link rel="stylesheet" href="/custom.css">
+</head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/navbar"></div>
+		<h2>Edit Product</h2>
+		<form th:action="@{/login}" method="post">
+			<br />
+			<input type="text" name="brand"
+				th:attr="placeholder=#{product.brand}" class="form-control" /> <br />
+			<input type="text" th:attr="placeholder=#{product.model}"
+				name="model" class="form-control" /> <br />
+			<input type="text" name="name"
+				th:attr="placeholder=#{product.name}" class="form-control" /> <br />
+			<input type="text" th:attr="placeholder=#{product.description}"
+				name="description" class="form-control" /> <br />
+				
+			<button class="btn btn-md btn-success btn-block" name="Submit"
+				value="NewProduct" type="Submit">Finish Edit</button>
+		</form>
+	</div>
+	<footer th:replace="fragments/footer"></footer>
+	<script th:replace="fragments/scripts"></script>
+</body>
+</html>

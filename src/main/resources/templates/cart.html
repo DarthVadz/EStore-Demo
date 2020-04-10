@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<link th:replace="fragments/headLinks">
+<title>Cart</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="card" style="width: 18rem;">
+			<img src="..." class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">Cart</h5>
+				<p class="card-text"></p>
+			</div>
+			<ul class="list-group list-group-flush" th:each="LineItem:${cart}">
+				<li class="list-group-item">
+					<h2 th:text="@{LineItem.name}"></h2>
+					<p th:text="@{LineItem.description}"></p>
+					
+					<button style="color:gray" th:action="@{/removeItem/} + ${LineItem.name}">Remove item</button>
+				</li>
+			</ul>
+			<div class="card-body">
+				<a href="/order" class="card-link">Finish Cart</a>
+				<a href="#" class="card-link">Go Back</a>
+			</div>
+		</div>
+		<div th:if="${#lists.isEmpty(cartItems)}">
+			<h3>Cart is empty</h3>
+		</div>
+	</div>
+	<footer th:replace="fragments/footer"></footer>
+	<script th:replace="fragments/scripts"></script>
+</body>
+</html>
